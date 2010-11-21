@@ -1,6 +1,17 @@
 def prime_factors(n)
-  return [2, 2] if n > 3
-  return [n]
+  prime_factors = []
+  check_value = 2
+
+  while (check_value <= n)
+    if n % check_value == 0
+      prime_factors << check_value
+      n = n / check_value
+    else
+      check_value += 1
+    end
+  end
+
+  return prime_factors
 end
 
 def is_prime?(n)
@@ -46,5 +57,13 @@ describe "prime_factors tests" do
 
   it "should return [2, 2] for 4" do
     prime_factors(4).should == [2, 2]
+  end
+
+  it "should return [5] for 5" do
+    prime_factors(5).should == [5]
+  end
+
+  it "should return [2, 3] for 6" do
+    prime_factors(6).should == [2, 3]
   end
 end
