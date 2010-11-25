@@ -46,7 +46,7 @@ class WordChain
     unvisited_one_off_words(word).each do |unvisited_word|
       chain << unvisited_word
       return chain if unvisited_word == end_word
-      search(unvisited_word, end_word, chain)
+      return search(unvisited_word, end_word, chain)
     end
   end
 end

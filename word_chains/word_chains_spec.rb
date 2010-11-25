@@ -51,6 +51,6 @@ describe "word_chains" do
   end
 
   it "should search" do
-    puts @chain.search("cat", "dog", ["cat"])
+    @chain.search("cat", "dog", ["cat"]).should == ["cat", "cot", "cog", "dog"]
   end
 end
