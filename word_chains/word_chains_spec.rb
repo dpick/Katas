@@ -2,12 +2,20 @@ require 'word_chains'
 
 describe "word_chains" do
   before(:each) do
-    dict = ['a', 'b', 'c', 'd']
+    dict = { 3 => ["cat",
+                   "cot",
+                   "cog",
+                   "dog",
+                   "the"]}
     @chain = WordChain.new(dict)
   end
 
   it "should load the dictionary right" do
-    @chain.dict.should == ['a', 'b', 'c', 'd']
+    @chain.dict.should == { 3 => ["cat",
+                                  "cot",
+                                  "cog",
+                                  "dog",
+                                  "the"]}
   end
 
   it "should return true for cat and cot" do
@@ -28,5 +36,21 @@ describe "word_chains" do
 
   it "should return false for words with a different length" do
     @chain.same_length?("blah", "foo").should be_false
+  end
+
+  it "should return ['cot'] for 'cat'" do
+    @chain.all_one_off_words("cat").should == ["cot"]
+  end
+
+  it "should return [] for 'the'" do
+    @chain.all_one_off_words("the").should == []
+  end
+
+  it "should return ['cot'] for 'cat'" do
+    @chain.unvisited_one_off_words("cat").should == ["cot"]
+  end
+
+  it "should search" do
+    puts @chain.search("cat", "dog", ["cat"])
   end
 end
