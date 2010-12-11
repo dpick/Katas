@@ -18,6 +18,7 @@ class Roman
     return roman_value if val == 0
 
     roman_value << @conversions[next_smallest_value(val)]
+
     convert(val - next_smallest_value(val), roman_value)
   end
 end

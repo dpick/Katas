@@ -2,11 +2,20 @@ require 'roman'
 
 describe Roman, "initial test" do
   before(:each) do
-    @conversions = {1  => "I",
-                    4  => "IV",
-                    5  => "V",
-                    9  => "IX",
-                    10 => "X"}
+
+    @conversions = { 1    => "I",
+                     4    => "IV",
+                     5    => "V",
+                     9    => "IX",
+                     10   => "X",
+                     40   => "XL",
+                     50   => "L",
+                     90   => "XC",
+                     100  => "C",
+                     400  => "CD",
+                     500  => "D",
+                     900  => "CM",
+                     1000 => "M" }
 
     @roman = Roman.new(@conversions)
   end
@@ -28,14 +37,16 @@ describe Roman, "initial test" do
       end
    end
 
-  [[1,  "I"   ],
-   [2,  "II"  ],
-   [3,  "III" ],
-   [4,  "IV"  ],
-   [5,  "V"   ],
-   [6,  "VI"  ],
-   [7,  "VII" ],
-   [11, "XI"  ]].each do |input, expected|
+  [[1,    "I"   ],
+   [2,    "II"  ],
+   [3,    "III" ],
+   [4,    "IV"  ],
+   [5,    "V"   ],
+   [6,    "VI"  ],
+   [7,    "VII" ],
+   [11,   "XI"  ],
+   [29,   "XXIX"],
+   [1999, "MCMXCIX"]].each do |input, expected|
     it "should return #{expected} for #{input}" do
       @roman.convert(input).should == expected
     end
