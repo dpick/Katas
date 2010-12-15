@@ -2,7 +2,6 @@ require 'roman'
 
 describe Roman, "initial test" do
   before(:each) do
-
     @conversions = { 1    => "I",
                      4    => "IV",
                      5    => "V",
