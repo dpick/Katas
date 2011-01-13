@@ -1,8 +1,7 @@
 class Fibonacci
   def fib(n)
     return n if n < 2
-
-    return fib(n - 1) + fib(n - 2)
+    fib(n - 1) + fib(n - 2)
   end
 
   def fib_mem(n, prev = [0, 1])
